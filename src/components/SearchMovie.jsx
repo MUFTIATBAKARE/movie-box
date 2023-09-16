@@ -5,11 +5,12 @@ function SearchMovie(props) {
     <div className="search-container">
       <input
         type="text"
-        placeholder="Search by title..."
+        placeholder="What do you want to search?"
         value={props.thisMovie}
         onChange={(event) => {
           props.setThisMovie(event.target.value);
         }}
+        className="search-box"
       />
     </div>
   );

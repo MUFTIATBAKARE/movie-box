@@ -23,14 +23,23 @@ function MovieDetails() {
       });
   }, [id]);
   if (data === null) {
-    // Render loading or fallback UI while data is being fetched
     return <p>Loading...</p>;
   }
   const d = new Date(data.release_date);
   const dateUTC = d.toUTCString();
+  const containerStyle = {
+    backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${data.backdrop_path})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    height: "100vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  };
   return (
-    <>
-      <ul>
+    <div className="movie-details-container" style={containerStyle}>
+      <ul className="card_details">
         <li key={data.id}>
           <h3 className="movie_title" data-testid="movie-title">
             {data.title}
@@ -39,10 +48,12 @@ function MovieDetails() {
             {dateUTC}
           </span>
           <p data-testid="movie-runtime">{data.runtime}</p>
-          <p data-testid="movie-overview">{data.overview}</p>
+          <p data-testid="movie-overview" className="details-overview">
+            {data.overview}
+          </p>
         </li>
       </ul>
-    </>
+    </div>
   );
 }
 

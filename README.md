@@ -12,7 +12,7 @@
 git clone https://github.com/MUFTIATBAKARE/movie-box.git
 </li>
 <li> Navigate to the project directory:
-cd movie-directory
+cd movie-box
 </li>
 <li> Install project dependencies:
 npm install

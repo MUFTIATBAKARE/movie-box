@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 function Card({ filteredMovies }) {
   return (
     <>
-      <ul>
+      <ul className="card_list">
         {filteredMovies.map((movie) => {
           return (
             <li key={movie.id}>
               <Link to={`/movie/${movie.id}`} className="movie-text">
                 <img
-                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
                   className="movie_poster"
                   data-testid="movie-poster"
                 />
