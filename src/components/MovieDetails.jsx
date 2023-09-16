@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 
 function MovieDetails() {
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
   useEffect(() => {
     fetch(
@@ -17,9 +19,10 @@ function MovieDetails() {
       .then((rawData) => {
         console.log(rawData);
         setData(rawData);
+        setLoading(false);
       })
       .catch((error) => {
-        console.error("Fetch error:", error);
+        setError(error);
       });
   }, [id]);
   if (data === null) {
@@ -39,6 +42,8 @@ function MovieDetails() {
   };
   return (
     <div className="movie-details-container" style={containerStyle}>
+      {loading && <div className="loader"></div>}
+      {error && <div>{`There is a problem fetching your data - ${error}`}</div>}
       <ul className="card_details">
         <li key={data.id}>
           <h3 className="movie_title" data-testid="movie-title">
